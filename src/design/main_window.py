@@ -344,7 +344,7 @@ class MainWindowDesign(object):
         self.chose.setText(_translate("MainWindow", "Вибрати..."))
         self.database_path.setPlaceholderText(_translate("MainWindow", "Шлях до збереження бази данних"))
         self.source_code.setText(_translate("MainWindow", "Вихідний код..."))
-        self.version.setText(_translate("MainWindow", "Версія программи: 0.0.0"))
+        self.version.setText(_translate("MainWindow", "Версія программи: 0.1.0"))
         self.label_6.setText(_translate("MainWindow", "Вихідний код"))
         self.label_7.setText(_translate("MainWindow", "Ambitify є безкоштовним та open-source планером,\n"
 "який не слідкує за користувачем та не має реклами.\n"
