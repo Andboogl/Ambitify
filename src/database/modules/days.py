@@ -28,7 +28,7 @@ class Days(GettingDays):
 
     def rename_day(self, day: str, new_name: str) -> None:
         """Rename the day"""
-        if self.get_day(day)[0].lower() == new_name.lower():
+        if self.get_day(day)[0] == new_name:
             raise errors.DayExistsError(
                 'A day with this name has already been created')
 

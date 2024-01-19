@@ -51,3 +51,6 @@ class DayEditWindow(QMainWindow):
 
             self.__design.task_edit_comment.setText(comment)
             self.__design.task_edit_progress.setText(progress)
+
+            self.__design.create_task_comment.setText(comment)
+            self.__design.create_task_name.setText(selected_task)
