@@ -43,8 +43,11 @@ class DayEditWindow(QMainWindow):
         selected_tasks = self.__design.tasks.selectedItems()
 
         if selected_tasks:
-            selected_task = selected_tasks[0].text().split('\n')
-            progress = selected_task[2][10:-1]
+            selected_task = selected_tasks[0].text().split('\n')[0]
+            task_from_database = self.__database.get_day(self.__day)[1][selected_task]
 
-            self.__design.task_edit_comment.setText(selected_task[1])
+            comment = task_from_database['comment']
+            progress = str(task_from_database['progress'])
+
+            self.__design.task_edit_comment.setText(comment)
             self.__design.task_edit_progress.setText(progress)
