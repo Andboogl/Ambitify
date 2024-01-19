@@ -18,6 +18,16 @@ class CalendarMenu:
         self.__msg_box_showing = msg_box_showing
         self.__main_window = main_window
 
+    def day_selected(self) -> None:
+        """Day selection handling"""
+        selected_days = self.__design.days.selectedItems()
+
+        if selected_days:
+            selected_day = selected_days[0].text()
+
+            self.__design.rename_day_name.setText(selected_day)
+            self.__design.new_day_name.setText(selected_day)
+
     def delete_day(self) -> None:
         """Delete selected day"""
         selected_days = self.__design.days.selectedItems()

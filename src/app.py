@@ -57,9 +57,11 @@ class MainWindow(QMainWindow):
         self.__design.save_settings.clicked.connect(self.__settings_menu.save_settings)
         self.__design.open_day.clicked.connect(self.__calendar_menu.open_day)
         self.__design.rename_day.clicked.connect(self.__calendar_menu.rename_day)
+        self.__design.days.itemSelectionChanged.connect(self.__calendar_menu.day_selected)
 
         self.__calendar_menu.load_days()
 
+        # Loading settings
         try:
             database_path = self.__settings.get_settings()
             self.__design.database_path.setText(database_path['database_folder_path'])
