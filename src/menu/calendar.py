@@ -6,7 +6,7 @@ Calendar menu
 
 from PyQt6.QtWidgets import QListWidgetItem
 from PyQt6.QtGui import QFont
-from day_edit import DayEditWindow
+from day_edit_window import DayEditWindow
 import database
 
 
