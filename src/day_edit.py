@@ -31,18 +31,20 @@ class DayEditWindow(QMainWindow):
         self.__design.back.clicked.connect(self.back)
         self.__design.delete_task.clicked.connect(self.delete_task)
         self.__design.change_task.clicked.connect(self.change_task)
-        self.__design.tasks.itemPressed.connect(self.task_pressing)
+        self.__design.tasks.itemSelectionChanged.connect(self.task_selected)
 
         self.load_tasks()
 
-    def task_pressing(self) -> None:
-        """Task pressing handling"""
+    def task_selected(self) -> None:
+        """Task selection handling"""
         selected_tasks = self.__design.tasks.selectedItems()
-        selected_task = selected_tasks[0].text().split('\n')
-        progress = selected_task[2][10:-1]
 
-        self.__design.task_edit_comment.setText(selected_task[1])
-        self.__design.task_edit_progress.setText(progress)
+        if selected_tasks:
+            selected_task = selected_tasks[0].text().split('\n')
+            progress = selected_task[2][10:-1]
+
+            self.__design.task_edit_comment.setText(selected_task[1])
+            self.__design.task_edit_progress.setText(progress)
 
     def delete_task(self) -> None:
         """Delete task"""
