@@ -59,7 +59,7 @@ class Tasks(GettingDays):
         if new_comment:
             data[time]['comment'] = new_comment
 
-        if new_progress:
+        if new_progress or new_progress == 0:
             data[time]['progress'] = new_progress
 
         self.__load_tasks_to_day(day, data)
