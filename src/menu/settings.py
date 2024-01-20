@@ -6,7 +6,7 @@ Settings menu
 
 import os
 import shutil
-from PyQt6.QtWidgets import QFileDialog, QMessageBox
+from PyQt6.QtWidgets import QFileDialog
 
 
 class SettingsMenu:
@@ -30,37 +30,37 @@ class SettingsMenu:
         database_folder_path = self.__design.database_path.text()
 
         if database_folder_path:
-
-            # Note: this string can be deleted
-            self.__design.database_path.setText(database_folder_path)
-
             # Copying the database to a folder selected by the user
             try:
-                dst = os.path.join(
-                        database_folder_path,
-                        'schedule.db')
+                src = os.path.join(
+                    self.__settings.get_settings()['database_folder_path'],
+                    'schedule.db')
 
-                if os.path.exists(dst):
-                    os.remove(dst)
+                dst = os.path.join(database_folder_path, 'schedule.db')
 
-                shutil.copy(
-                    os.path.join(
-                        self.__settings.get_settings()['database_folder_path'],
-                        'schedule.db'), dst)
+                try:
+                    if os.path.exists(dst):
+                        os.remove(dst)
 
-                self.__settings.load_settings(
-                    {'database_folder_path': database_folder_path})
+                except PermissionError:
+                    self.__msg_box_showing.show(
+                        f'Для копіювання бази данних видаліть файл за шляхом {dst}')
 
+                else:
+                    shutil.copy(src, dst)
 
-            except Exception as error:
+                    # Saving new database path
+                    self.__settings.load_settings({'database_folder_path': database_folder_path})
+
+                    self.__msg_box_showing.show(
+                        'Для того щоб ви могли знову працювати '\
+                        'з базою данних, треба перезавантажити программу')
+                    exit(0)
+
+            except Exception:
                 self.__msg_box_showing.show(
-                    f'Виникла помилка {error} під час копіювання бази данних.'\
-                    ' Можливо, вибрана директорія є системною.')
-
-            self.__msg_box_showing.show(
-                'Для того щоб ваші зміни у базу данних зберігалися потім,'\
-                ' программа вимкнется. Знову відкрийте її після вимкленя')
-            exit(0)
+                    'Виникла помилка під час копіювання бази данних. '\
+                    'Можливо, вибрана директорія є системною')
 
         else:
             self.__msg_box_showing.show('Виберіть папку')

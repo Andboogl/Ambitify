@@ -44,6 +44,7 @@ class DayEditWindow(QMainWindow):
 
         if selected_tasks:
             selected_task = selected_tasks[0].text().split('\n')[0]
+
             task_from_database = self.__database.get_day(self.__day)[1][selected_task]
 
             comment = task_from_database['comment']
