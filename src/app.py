@@ -50,7 +50,6 @@ class MainWindow(QMainWindow):
         self.__design.back.clicked.connect(lambda: self.__design.tabShow.setCurrentIndex(2))
         self.__design.calendar_2.clicked.connect(self.switching_menu.calendar_menu)
         self.__design.settings_2.clicked.connect(self.switching_menu.settings_menu)
-        self.__design.settings.clicked.connect(self.switching_menu.settings_menu)
         self.__design.create_new_day.clicked.connect(self.__calendar_menu.create_new_day)
         self.__design.delete_day.clicked.connect(self.__calendar_menu.delete_day)
         self.__design.chose.clicked.connect(self.__settings_menu.chose_database_folder_path)
