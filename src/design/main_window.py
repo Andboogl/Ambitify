@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from version import VERSION
+from const import VERSION
 
 
 class MainWindowDesign(object):
