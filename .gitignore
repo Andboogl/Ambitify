@@ -11,6 +11,4 @@ data
 idea
 DS_Store
 .DS_Store
-.vscode
-vscode
 pycache_deleter.py
