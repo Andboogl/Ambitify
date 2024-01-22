@@ -6,6 +6,6 @@ Program values
 
 import os
 
-VERSION = '0.3.2'
+VERSION = '0.3.3'
 SETTINGS_FOLDER_PATH = os.path.join(os.path.expanduser('~'), '.ambitify')
 SETTINGS_FILE_PATH = os.path.join(SETTINGS_FOLDER_PATH, 'settings.json')

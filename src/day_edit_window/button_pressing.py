@@ -44,13 +44,14 @@ class DayEditWindowButtonPressing:
             edit_task_progress = self.__design.task_edit_progress.text()
 
             if edit_task_name.strip():
-                try:
-                    self.__database.change_task_to_day(
-                        self.__day, selected_task, new_time=edit_task_name)
-                    selected_task = edit_task_name
+                if edit_task_name != selected_task:
+                    try:
+                        self.__database.change_task_to_day(
+                            self.__day, selected_task, new_time=edit_task_name)
+                        selected_task = edit_task_name
 
-                except database.errors.TaskExistsError:
-                    self.__msg_box_showing.show('Завдання з таким імʼям вже існує')
+                    except database.errors.TaskExistsError:
+                        self.__msg_box_showing.show('Завдання з таким імʼям вже існує')
 
             if edit_task_comment.strip():
                 self.__database.change_task_to_day(
